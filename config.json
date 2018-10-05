@@ -1,0 +1,20 @@
+  [
+  {
+  "tokenAccount":"eosio.token",
+  "transferAccount":"eosio",
+  "privateKey":"5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3",
+  "symbol":"SYS",
+  "ratio":0.5,
+  "memo":"Your mensage Here",
+  "decimals":4
+},
+{
+  "tokenAccount":"eosio.token",
+  "transferAccount":"eosio",
+  "privateKey":"5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3",
+  "symbol":"BLL",
+  "ratio":0.5,
+  "memo":"Your mensage Here",
+  "decimals":4
+}
+]
