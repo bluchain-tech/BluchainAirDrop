@@ -1,14 +1,15 @@
 {
-  "name": "bluchainairdrop",
+  "name": "eosjs-browser",
   "version": "1.0.0",
   "description": "",
-  "main": "aindrop.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "eosjs": "^16.0.9"
+    "eosjs": "^14.0.0"
   }
 }
