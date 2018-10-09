@@ -50,6 +50,7 @@
   eos = Eos(baseConfig);
 
   async function run() {
+    document.write("<h1>BluchainAirDrop!</h1><p> The Simplest Airdrop Tool Ever!</p>");
 
     var accounts = db.airdroplist.accounts;
     var config = db.config;
@@ -68,7 +69,8 @@
   async function airdrop(conf, acct) {
     var i;
     console.log('starting airdrop')
-    //document.write('starting airdrop')
+    document.write('starting airdrop')
+
 
     for (i = 0; i < acct.length; i++) {
       let info = await eos.getAccount(acct[i]);
@@ -82,7 +84,7 @@
        
        console.log(quantity);
 
-        transfer(conf.transferAccount, info.account_name, quantity.toString(), conf.memo);
+      //  transfer(conf.transferAccount, info.account_name, quantity.toString(), conf.memo);
 
         clearInstance();
 
