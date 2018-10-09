@@ -38,7 +38,7 @@
     ],
     airdroplist: {
       accounts: [
-        "fbaptista322",
+        "test1",
         "test2",
         "test3",
         "test4",
@@ -69,7 +69,7 @@
   async function airdrop(conf, acct) {
     var i;
     console.log('starting airdrop')
-    document.write('starting airdrop')
+    document.write('starting airdrop <br/>')
 
 
     for (i = 0; i < acct.length; i++) {
@@ -89,13 +89,14 @@
         clearInstance();
 
         console.log(quantity + ' dropped to ' + info.account_name);
-        document.write(quantity + ' dropped to ' + info.account_name);
+        document.write(quantity + ' dropped to ' + info.account_name + '<br/>');
 
       }
 
     }
 
     console.log('airdrop finished')
+    document.write('airdrop finished <br/>')
   }
 
   async function transfer(from, to, quatity, memo) {

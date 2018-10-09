@@ -45,7 +45,7 @@
     console.log(accounts);
 
     var j;
-    document.write("<h1>Random Airdrop SYS!</p>");
+    document.write("<h1>Random Airdrop SYS!</h1>");
 
     for (j = 0; j < config.length; j++) {
 
@@ -57,7 +57,7 @@
   async function airdrop(conf, acct) {
     var i;
     console.log('starting airdrop')
-    document.write('starting airdrop')
+    document.write('starting airdrop <br/>')
 
     for (i = 0; i < acct.length; i++) {
       let info = await eos.getAccount(acct[i]);
@@ -74,13 +74,14 @@
         clearInstance();
 
         console.log(quantity + ' dropped to ' + info.account_name);
-        document.write(quantity + ' dropped to ' + info.account_name);
+        document.write(quantity + ' dropped to ' + info.account_name + '<br/>');
 
       }
 
     }
 
     console.log('airdrop finished')
+    document.write('airdrop finished')
   }
 
   async function transfer(from, to, quatity, memo) {
