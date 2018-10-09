@@ -1,0 +1,106 @@
+<html>
+    <script src="./eosjs-browser.js"></script>
+
+<script>
+
+  baseConfig = {
+    keyProvider: [], // WIF string or array of keys..
+    httpEndpoint: 'http://dev.bluchain.tech:8888',
+    expireInSeconds: 60,
+    broadcast: false,
+    debug: false,
+    sign: true,
+    chainId: 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f', // 32 byte (64 char) hex string
+  };
+
+  db = {
+    config: [{
+        tokenAccount: "eosio.token",
+        transferAccount: "eosio",
+        privateKey: "5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3",
+        symbol: "SYS",
+        ratio: 0.1,
+        memo: "Your mensage Here",
+        decimals: 4
+      }
+    ],
+    airdroplist: {
+      accounts: [
+        "test1",
+        "test2",
+        "test3",
+        "test4",
+        "test5"
+      ]
+    }
+  }
+
+  eos = Eos(baseConfig);
+
+  async function run() {
+
+    var accounts = db.airdroplist.accounts;
+    var config = db.config;
+    console.log(config);
+    console.log(accounts);
+
+    var j;
+    document.write("<h1>Random Airdrop SYS!</p>");
+
+    for (j = 0; j < config.length; j++) {
+
+      reloadInstance(config[j].privateKey);
+      await airdrop(config[j], accounts);
+    }
+  }
+
+  async function airdrop(conf, acct) {
+    var i;
+    console.log('starting airdrop')
+    document.write('starting airdrop')
+
+    for (i = 0; i < acct.length; i++) {
+      let info = await eos.getAccount(acct[i]);
+      if (info.account_name) {
+
+        var balance = Math.floor(Math.random() * 1001) + 1;     // returns a random integer from 0 to 1000
+        var value = balance * conf.ratio;
+        var quantity = value.toFixed(conf.decimals) + ' ' + conf.symbol
+       
+       console.log(quantity);
+
+      //  transfer(conf.transferAccount, info.account_name, quantity.toString(), conf.memo);
+
+        clearInstance();
+
+        console.log(quantity + ' dropped to ' + info.account_name);
+        document.write(quantity + ' dropped to ' + info.account_name);
+
+      }
+
+    }
+
+    console.log('airdrop finished')
+  }
+
+  async function transfer(from, to, quatity, memo) {
+    await this.eos.transaction('eosio.token', token => {
+      token.transfer(from, to, quatity, memo);
+    });
+  }
+
+  function reloadInstance(privkey) {
+    baseConfig.keyProvider = [privkey];
+    eos = Eos(baseConfig);
+  };
+
+  function clearInstance() {
+    baseConfig.keyProvider = ['5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'];
+    eos = Eos(baseConfig);
+  }
+
+  run();
+
+</script>
+
+</html>
